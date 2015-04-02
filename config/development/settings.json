@@ -1,0 +1,11 @@
+{
+  "public": {
+    "title": "Meteor Money",
+    "header": {
+      "imageSrc": "/header-image.jpg",
+      "imageCaption": "Easily track your bills, spending, and savings"
+    }
+  },
+
+  "sample": "value"
+}

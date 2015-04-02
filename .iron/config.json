@@ -1,0 +1,18 @@
+{
+  "engines": {
+    "html": "html",
+    "js": "js",
+    "css": "scss"
+  },
+
+  "template": {
+    "html": true,
+    "js": true,
+    "css": true
+  },
+
+  "route": {
+    "controller": true,
+    "template": true
+  }
+}
