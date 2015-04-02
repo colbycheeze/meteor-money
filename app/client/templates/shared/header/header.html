@@ -1,17 +1,22 @@
 <template name="Header">
-  <ul id="login-dropdown" class="dropdown-content">
-    <li><a href="#">Login Todo</a></li>
-  </ul>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Meteor Money</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Link 1</a></li>
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Meteor Money</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
         <li><a href="#">Link 2</a></li>
-        <li><a class="dropdown-button" href="#"
-            data-activates="login-dropdown">Todo: Login Button</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{> loginButtons}} <!-- here -->
       </ul>
     </div>
-  </nav>
-    {{> loginButtons}}
+  </div>
 </template>

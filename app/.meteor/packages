@@ -11,10 +11,8 @@ aldeed:collection2
 aldeed:autoform
 sacha:spin
 mrt:moment
-gildaspk:autoform-materialize
-materialize:materialize
 accounts-password
 underscore
-accounts-ui
-autopublish
 msavin:mongol
+twbs:bootstrap
+ian:accounts-ui-bootstrap-3
