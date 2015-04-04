@@ -12,16 +12,27 @@ this.Schemas.Transactions = new SimpleSchema({
 
   date: {
     type: Date,
-    autoValue: function() {
-      if (this.isInsert) {
-        return new Date;
-      } else if (this.isUpset) {
-        return {$setOnInsert: new Date};
-      } else {
-        this.unset();
-      }
+    autoform: {
+      type: "bootstrap-datepicker"
     },
     label: "Date"
+  },
+
+  type: {
+    type: String,
+    label: "Type",
+    allowedValues: ['payment', 'income'],
+    autoform: {
+      options: [
+        {label: "Payment", value: "payment"},
+        {label: "Income", value: "income"}
+      ]
+    }
+  },
+
+  description: {
+    type: String,
+    label: "Description"
   },
 
   amount: {
@@ -46,33 +57,34 @@ this.Schemas.Transactions = new SimpleSchema({
 
 Transactions.attachSchema(this.Schemas.Transactions);
 
-// if (Meteor.isServer) {
-//   Transactions.allow({
-//     insert: function (userId, doc) {
-//       return false;
-//     },
-//
-//     update: function (userId, doc, fieldNames, modifier) {
-//       return false;
-//     },
-//
-//     remove: function (userId, doc) {
-//       return false;
-//     }
-//   });
-//
-//   Transactions.deny({
-//     insert: function (userId, doc) {
-//       return true;
-//     },
-//
-//     update: function (userId, doc, fieldNames, modifier) {
-//       return true;
-//     },
-//
-//     remove: function (userId, doc) {
-//       return true;
-//     }
-//   });
-// }
+
+if (Meteor.isServer) {
+  Transactions.allow({
+    insert: function (userId, doc) {
+      return userid === doc.userId;
+    },
+
+    update: function (userId, doc, fieldNames, modifier) {
+      return userid === doc.userId;
+    },
+
+    remove: function (userId, doc) {
+      return userid === doc.userId;
+    }
+  });
+
+  // Transactions.deny({
+  //   insert: function (userId, doc) {
+  //     return true;
+  //   },
+  //
+  //   update: function (userId, doc, fieldNames, modifier) {
+  //     return true;
+  //   },
+  //
+  //   remove: function (userId, doc) {
+  //     return true;
+  //   }
+  // });
+}
 

@@ -1,0 +1,43 @@
+<template name="TransactionsList">
+
+  <h1>All transactions</h1>
+
+  {{> CreateTransaction}}
+
+  <div class="transactions-list">
+    <table class="table table-striped auto">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th class="text-center">Description</th>
+          <th class="text-right">Amount</th>
+        </tr>
+      </thead>
+      {{#if transactionsExist}}
+        <tbody>
+          {{#each transactions}}
+            {{> TransactionItem}}
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr class="total">
+            <td class="text-right" colspan=2>
+              <strong>Total:</strong>
+            </td>
+            <td class="text-right">
+              {{transactionsTotal}}
+            </td>
+          </tr>
+        </tfoot>
+        {{else}}
+        <tbody>
+          <tr>
+            <td colspan=3>
+              There are no transactions to show
+            </td>
+          </tr>
+        </tbody>
+      {{/if}}
+    </table>
+  </div>
+</template>

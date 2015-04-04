@@ -1,4 +1,9 @@
 <template name="Home">
-  <h3>A really big heading!</h3>
-  <p>Some content on the page</p>
+
+  {{#if currentUser}}
+    {{> TransactionsList}}
+    {{else}}
+    <p>Please Log In!</p>
+  {{/if}}
+
 </template>

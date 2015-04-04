@@ -2,7 +2,7 @@
   "engines": {
     "html": "html",
     "js": "js",
-    "css": "scss"
+    "css": "less"
   },
 
   "template": {

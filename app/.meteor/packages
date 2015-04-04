@@ -16,3 +16,8 @@ underscore
 msavin:mongol
 twbs:bootstrap
 ian:accounts-ui-bootstrap-3
+momentjs:moment
+less
+numeral:numeral
+rajit:bootstrap3-datepicker
+aldeed:autoform-bs-datepicker

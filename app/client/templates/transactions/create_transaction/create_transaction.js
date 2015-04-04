@@ -1,23 +1,23 @@
 /*****************************************************************************/
-/* Transactions: Event Handlers */
+/* CreateTransaction: Event Handlers */
 /*****************************************************************************/
-Template.Transactions.events({
+Template.CreateTransaction.events({
 });
 
 /*****************************************************************************/
-/* Transactions: Helpers */
+/* CreateTransaction: Helpers */
 /*****************************************************************************/
-Template.Transactions.helpers({
+Template.CreateTransaction.helpers({
 });
 
 /*****************************************************************************/
-/* Transactions: Lifecycle Hooks */
+/* CreateTransaction: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Transactions.created = function () {
+Template.CreateTransaction.created = function () {
 };
 
-Template.Transactions.rendered = function () {
+Template.CreateTransaction.rendered = function () {
 };
 
-Template.Transactions.destroyed = function () {
+Template.CreateTransaction.destroyed = function () {
 };

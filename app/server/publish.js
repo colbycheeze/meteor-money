@@ -5,5 +5,7 @@
  */
 
 Meteor.publish('transactions', function (/* args */) {
-  return Transactions.find();
+  if (!this.userId) return this.ready();
+
+  return Transactions.find({userId: this.userId});
 });
