@@ -12,7 +12,7 @@ Template.TransactionForm.events({
 /*****************************************************************************/
 Template.TransactionForm.helpers({
 
-  docForm: function() {
+  formDoc: function() {
     return {
       date: new Date,
       type: "payment"
