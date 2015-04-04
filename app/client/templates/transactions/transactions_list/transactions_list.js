@@ -8,12 +8,9 @@ Template.TransactionsList.events({
 /* TransactionsList: Helpers */
 /*****************************************************************************/
 Template.TransactionsList.helpers({
-  transactionsExist: function() {
-    return Transactions.find({userId: Meteor.userId()}).count() >= 1;
-  },
 
-  transactions: function() {
-    return Transactions.find({userId: Meteor.userId()}, {
+  transactions: function(type) {
+    return Transactions.find({userId: Meteor.userId(), type: type}, {
       sort: { date: -1 }
     });
   },

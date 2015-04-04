@@ -1,30 +1,26 @@
 /*****************************************************************************/
-/* TransactionItem: Event Handlers */
+/* TableWrapper: Event Handlers */
 /*****************************************************************************/
-Template.TransactionItem.events({
+Template.TableWrapper.events({
 });
 
 /*****************************************************************************/
-/* TransactionItem: Helpers */
+/* TableWrapper: Helpers */
 /*****************************************************************************/
-Template.TransactionItem.helpers({
-  date: function() {
-    return moment(this.date).format("MM/DD");;
-  },
-
-  amount: function() {
-    return numeral(this.amount).format('$0,0.00');
+Template.TableWrapper.helpers({
+  transactionsExist: function() {
+    return Transactions.find({userId: Meteor.userId()}).count() >= 1;
   }
 });
 
 /*****************************************************************************/
-/* TransactionItem: Lifecycle Hooks */
+/* TableWrapper: Lifecycle Hooks */
 /*****************************************************************************/
-Template.TransactionItem.created = function () {
+Template.TableWrapper.created = function () {
 };
 
-Template.TransactionItem.rendered = function () {
+Template.TableWrapper.rendered = function () {
 };
 
-Template.TransactionItem.destroyed = function () {
+Template.TableWrapper.destroyed = function () {
 };
