@@ -11,8 +11,12 @@ Template.TransactionForm.events({
 /* TransactionForm: Helpers */
 /*****************************************************************************/
 Template.TransactionForm.helpers({
-  today: function() {
-    return new Date;
+
+  docForm: function() {
+    return {
+      date: new Date,
+      type: "payment"
+    }
   }
 });
 

@@ -1,11 +1,11 @@
 <template name="TransactionForm">
   <!-- {{> quickForm collection="Transactions" id="insertTransactionForm" type="insert"}} -->
-  {{#autoForm collection="Transactions" id="insertTransactionForm" type="insert"}}
+  {{#autoForm collection="Transactions" id="insertTransactionForm" type="insert" doc=formDoc}}
     <fieldset>
-      {{> afQuickField name='date' defaultValue=today}}
+      {{> afQuickField name='date'}}
       {{> afQuickField name='description'}}
       {{> afQuickField name='amount'}}
-      {{> afQuickField name='type' type="select-radio-inline" defaultValue="payment" template="bootstrap3-horizontal"}}
+      {{> afQuickField name='type' type="select-radio-inline" template="bootstrap3-horizontal"}}
     </fieldset>
     <button type="submit" class="btn btn-primary">Create</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
