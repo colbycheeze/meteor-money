@@ -8,9 +8,6 @@ Template.TableWrapper.events({
 /* TableWrapper: Helpers */
 /*****************************************************************************/
 Template.TableWrapper.helpers({
-  transactionsExist: function() {
-    return Transactions.find({userId: Meteor.userId()}).count() >= 1;
-  }
 });
 
 /*****************************************************************************/

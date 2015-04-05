@@ -8,25 +8,12 @@ Template.TransactionsList.events({
 /* TransactionsList: Helpers */
 /*****************************************************************************/
 Template.TransactionsList.helpers({
+  virtualBalance: function() {
+    var paymentsTotal = Blaze._globalHelpers.transactionsTotal("payment");
+    var incomeTotal = Blaze._globalHelpers.transactionsTotal("income");
 
-  transactions: function(type) {
-    return Transactions.find({userId: Meteor.userId(), type: type}, {
-      sort: { date: -1 }
-    });
-  },
-
-  transactionsTotal: function() {
-    var total = _.reduce(_.map(Transactions.find({userId: Meteor.userId()}).fetch(),
-          function(doc) {
-            //map
-            return doc.amount
-          }),
-        function(memo, num){
-          //reduce
-          return memo + num;
-        });
-
-    return numeral(total).format('$0,0.00');
+    // return incomeTotal.difference(paymentsTotal);
+    return numeral(incomeTotal - paymentsTotal).format('$0,0.00');
   }
 });
 

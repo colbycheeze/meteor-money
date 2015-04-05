@@ -1,4 +1,5 @@
 <template name="TableWrapper">
+  {{> UI.contentBlock}}
   <table class="table table-striped auto">
     <thead>
       <tr>
@@ -8,7 +9,24 @@
       </tr>
     </thead>
     {{#if transactionsExist}}
-      {{> UI.contentBlock}}
+      <tbody>
+        {{#each transactions type}}
+          {{> TransactionItem}}
+        {{/each}}
+      </tbody>
+
+      <tfoot>
+        <tr class="total">
+          <td class="text-right" colspan=2>
+            <strong>Total:</strong>
+          </td>
+          <td class="text-right">
+            {{#with transactionsTotal type}}
+              {{formatCurrency this}}
+            {{/with}}
+          </td>
+        </tr>
+      </tfoot>
     {{else}}
       <tbody>
         <tr>

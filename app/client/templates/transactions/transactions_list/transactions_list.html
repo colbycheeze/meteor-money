@@ -7,24 +7,14 @@
 
   <div class="transactions-list">
 
-    <h3>Payments</h3>
-    {{#TableWrapper}}
-      <tbody>
-        {{#each transactions "payment"}}
-          {{> TransactionItem}}
-        {{/each}}
-      </tbody>
-      <tfoot>
-        <tr class="total">
-          <td class="text-right" colspan=2>
-            <strong>Total:</strong>
-          </td>
-          <td class="text-right">
-            {{transactionsTotal}}
-          </td>
-        </tr>
-      </tfoot>
+    {{#TableWrapper type="payment"}}
+      <h3>Payments</h3>
     {{/TableWrapper}}
+    {{#TableWrapper type="income"}}
+      <h3>Income</h3>
+    {{/TableWrapper}}
+
+    <h3> Virtual Balance: {{virtualBalance}} </h3>
 
   </div>
 </template>
