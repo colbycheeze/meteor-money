@@ -1,8 +1,6 @@
 HomeController = RouteController.extend({
-  layoutTemplate: 'MasterLayout',
-
-  subscriptions: function() {
-    this.subscribe('transactions')
+  waitOn: function() {
+    Meteor.subscribe('transactions');
   },
 
   action: function() {

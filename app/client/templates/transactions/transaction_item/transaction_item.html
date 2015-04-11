@@ -1,7 +1,7 @@
 <template name="TransactionItem">
-  <tr>
-    <td>{{date}}</td>
+  <tr id={{id}}>
+    <td>{{formatDate date}}</td>
     <td class="text-center">{{description}}</td>
-    <td class="text-right">{{amount}}</td>
+    <td class="text-right">{{formatCurrency amount}}</td>
   </tr>
 </template>

@@ -2,19 +2,16 @@
 /* TransactionItem: Event Handlers */
 /*****************************************************************************/
 Template.TransactionItem.events({
+  'click tr': function(e, tmpl) {
+    e.stopPropagation();
+    Router.go('transaction.show', {_id: tmpl.data._id});
+  }
 });
 
 /*****************************************************************************/
 /* TransactionItem: Helpers */
 /*****************************************************************************/
 Template.TransactionItem.helpers({
-  date: function() {
-    return moment(this.date).format("MM/DD");;
-  },
-
-  amount: function() {
-    return numeral(this.amount).format('$0,0.00');
-  }
 });
 
 /*****************************************************************************/

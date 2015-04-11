@@ -1,26 +1,23 @@
 /*****************************************************************************/
-/* CreateTransaction: Event Handlers */
+/* TransactionShow: Event Handlers */
 /*****************************************************************************/
-Template.CreateTransaction.events({
+Template.TransactionShow.events({
 });
 
 /*****************************************************************************/
-/* CreateTransaction: Helpers */
+/* TransactionShow: Helpers */
 /*****************************************************************************/
-Template.CreateTransaction.helpers({
+Template.TransactionShow.helpers({
 });
 
 /*****************************************************************************/
-/* CreateTransaction: Lifecycle Hooks */
+/* TransactionShow: Lifecycle Hooks */
 /*****************************************************************************/
-Template.CreateTransaction.created = function () {
+Template.TransactionShow.created = function () {
 };
 
-Template.CreateTransaction.rendered = function () {
-  $('#addNewTransactionModal').on('shown.bs.modal', function () {
-    $('input[name="description"]').focus();
-  });
+Template.TransactionShow.rendered = function () {
 };
 
-Template.CreateTransaction.destroyed = function () {
+Template.TransactionShow.destroyed = function () {
 };
