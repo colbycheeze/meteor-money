@@ -23,7 +23,7 @@ Template.registerHelper( "formatCurrency", function(num) {
 });
 
 Template.registerHelper( "formatDate", function(date) {
-  return moment(date).format("MM/DD");;
+  return moment(date).format("MMM D");
 });
 
 Template.registerHelper( "transactionsExist", function() {
