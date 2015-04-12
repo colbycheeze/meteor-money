@@ -1,5 +1,8 @@
 <template name="TransactionShow">
-  <p>{{description}}</p>
+  {{#contentFor "modalTitle"}}
+    {{description}}
+  {{/contentFor}}
+
   <p>date: {{formatDate date}}</p>
   <p>{{formatCurrency amount}}</p>
 </template>

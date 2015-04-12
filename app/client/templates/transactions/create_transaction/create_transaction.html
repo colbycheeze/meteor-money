@@ -1,20 +1,6 @@
 <template name="CreateTransaction">
-  <button class="btn btn-primary add-new" data-toggle="modal"
-    data-target="#addNewTransactionModal"><i class="fa fa-plus"></i> Add New </button>
-
-<!-- Modal -->
-<div class="modal fade" id="addNewTransactionModal" tabindex="-1" role="dialog"
-  aria-labelledby="addNewModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Transaction</h4>
-      </div>
-      <div class="modal-body">
-        {{> TransactionForm}}
-      </div>
-    </div>
-  </div>
-</div>
+  <button class="btn btn-primary add-new">
+    <i class="fa fa-plus"></i> Add New
+  </button>
 </template>
+

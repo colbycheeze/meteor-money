@@ -1,6 +1,6 @@
 TransactionController = RouteController.extend({
   waitOn: function() {
-    return Meteor.subscribe('transaction', this.params._id);
+    return Meteor.subscribe('transactions');
   },
 
   data: function () {
@@ -8,7 +8,15 @@ TransactionController = RouteController.extend({
   },
 
   show: function() {
-    this.render('TransactionShow', {to: 'modal'});
+    $('#mainModal').modal('show');
+    this.render('Home');
+    this.render('TransactionShow', {to: 'modalContent'});
+  },
+
+  create: function() {
+    $('#mainModal').modal('show');
+    this.render('Home');
+    this.render('TransactionForm', {to: 'modalContent'});
   },
 
   edit: function() {

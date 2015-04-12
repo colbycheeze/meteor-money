@@ -2,6 +2,9 @@
 /* CreateTransaction: Event Handlers */
 /*****************************************************************************/
 Template.CreateTransaction.events({
+  'click button': function() {
+    Router.go('transaction.new');
+  }
 });
 
 /*****************************************************************************/
@@ -17,9 +20,6 @@ Template.CreateTransaction.created = function () {
 };
 
 Template.CreateTransaction.rendered = function () {
-  $('#addNewTransactionModal').on('shown.bs.modal', function () {
-    $('input[name="description"]').focus();
-  });
 };
 
 Template.CreateTransaction.destroyed = function () {

@@ -1,5 +1,8 @@
 <template name="TransactionForm">
-  <!-- {{> quickForm collection="Transactions" id="insertTransactionForm" type="insert"}} -->
+  {{#contentFor "modalTitle"}}
+    Create New Transaction
+  {{/contentFor}}
+
   {{#autoForm collection="Transactions" id="insertTransactionForm" type="insert" doc=formDoc}}
     <fieldset>
       {{> afQuickField name='date'}}

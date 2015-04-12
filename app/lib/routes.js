@@ -8,14 +8,21 @@ Router.route('/', {
   name: 'home',
   controller: 'HomeController',
   action: 'action',
-  where: 'client'
+  where: 'client',
+});
+
+Router.route('/transactions/new', {
+  name: 'transaction.new',
+  controller: 'TransactionController',
+  action: 'create',
+  where: 'client',
 });
 
 Router.route('/transactions/:_id', {
   name: 'transaction.show',
   controller: 'TransactionController',
   action: 'show',
-  where: 'client'
+  where: 'client',
 });
 
 Router.route('/transactions/:_id/edit', {
@@ -32,9 +39,7 @@ Router.route('/transactions', {
   where: 'client'
 });
 
-
 Router.route('/about');
-
 
 Router.route('categories', {
   name: 'categories',

@@ -2,9 +2,9 @@
 /* TransactionForm: Event Handlers */
 /*****************************************************************************/
 Template.TransactionForm.events({
-  'submit form': function(e, tmpl) {
-    $('#addNewTransactionModal').modal('hide');
-  }
+  // 'submit form': function(e, tmpl) {
+  //   $('#mainModal').modal('hide');
+  // }
 });
 
 /*****************************************************************************/
@@ -27,6 +27,9 @@ Template.TransactionForm.created = function () {
 };
 
 Template.TransactionForm.rendered = function () {
+  $('#mainModal').on('shown.bs.modal', function () {
+    $('input[name="description"]').focus();
+  });
 };
 
 Template.TransactionForm.destroyed = function () {
