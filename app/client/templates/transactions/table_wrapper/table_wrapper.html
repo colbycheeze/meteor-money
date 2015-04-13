@@ -1,5 +1,4 @@
 <template name="TableWrapper">
-  {{> UI.contentBlock}}
   <table class="table table-striped table-hover auto">
     <thead>
       <tr>
@@ -7,7 +6,11 @@
         <th class="text-center">Description</th>
         <th class="text-right">Amount</th>
       </tr>
+      <tr>
+        <th colspan=3>{{> UI.contentBlock}}</th>
+      </tr>
     </thead>
+
     {{#if transactionsExist}}
       <tbody>
         {{#each transactions type}}
@@ -17,17 +20,18 @@
 
       <tfoot>
         <tr class="total">
-          <td class="text-right" colspan=2>
+          <td class="text-left" colspan=2>
             <strong>Total:</strong>
           </td>
           <td class="text-right">
             {{#with transactionsTotal type}}
-              {{formatCurrency this}}
+              <strong>{{formatCurrency this}}</strong>
             {{/with}}
           </td>
         </tr>
       </tfoot>
-    {{else}}
+
+      {{else}}
       <tbody>
         <tr>
           <td colspan=3>

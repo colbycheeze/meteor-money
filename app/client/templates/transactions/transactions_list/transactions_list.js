@@ -9,11 +9,11 @@ Template.TransactionsList.events({
 /*****************************************************************************/
 Template.TransactionsList.helpers({
   virtualBalance: function() {
-    var paymentsTotal = Blaze._globalHelpers.transactionsTotal("payment");
+    var expenseTotal = Blaze._globalHelpers.transactionsTotal("expense");
     var incomeTotal = Blaze._globalHelpers.transactionsTotal("income");
+    var virtualBalance = numeral(incomeTotal - expenseTotal);
 
-    // return incomeTotal.difference(paymentsTotal);
-    return numeral(incomeTotal - paymentsTotal).format('$0,0.00');
+    return Blaze._globalHelpers.formatCurrency(virtualBalance);
   }
 });
 

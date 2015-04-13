@@ -21,10 +21,10 @@ this.Schemas.Transactions = new SimpleSchema({
   type: {
     type: String,
     label: "Type",
-    allowedValues: ['payment', 'income'],
+    allowedValues: ['expense', 'income'],
     autoform: {
       options: [
-        {label: "Payment", value: "payment"},
+        {label: "Expense", value: "expense"},
         {label: "Income", value: "income"}
       ]
     }

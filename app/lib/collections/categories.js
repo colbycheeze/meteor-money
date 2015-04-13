@@ -9,6 +9,14 @@ this.Schemas.Categories = new SimpleSchema({
       return "unsorted";
     },
     label: "Name"
+  },
+
+  parentId: {
+    type:  String,
+    autoValue: function() {
+      return undefined;
+    },
+    label: "Parent Id"
   }
 });
 

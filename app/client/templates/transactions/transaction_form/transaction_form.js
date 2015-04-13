@@ -2,9 +2,9 @@
 /* TransactionForm: Event Handlers */
 /*****************************************************************************/
 Template.TransactionForm.events({
-  // 'submit form': function(e, tmpl) {
-  //   $('#mainModal').modal('hide');
-  // }
+  'submit form': function(e, tmpl) {
+    $('#mainModal').modal('hide');
+  }
 });
 
 /*****************************************************************************/
@@ -15,7 +15,7 @@ Template.TransactionForm.helpers({
   formDoc: function() {
     return {
       date: new Date,
-      type: "payment"
+      type: "expense"
     }
   }
 });

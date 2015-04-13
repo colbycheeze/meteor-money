@@ -14,5 +14,5 @@ Meteor.publish('transactions', function (/* args */) {
 Meteor.publish('categories', function (/* args */) {
   if (!this.userId) return this.ready();
 
-  return Categories.find();
+  return Categories.find({userId: this.userId});
 });
