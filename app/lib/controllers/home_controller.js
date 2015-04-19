@@ -5,5 +5,6 @@ HomeController = RouteController.extend({
 
   action: function() {
     this.render('Home');
+    this.render('NonexistentTemplateToTriggerLifeCycleHooks', {to: 'modalContent'});
   }
 });

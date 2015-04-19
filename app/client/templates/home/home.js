@@ -16,8 +16,9 @@ Template.Home.helpers({
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Home.created = function () {
-};
+Template.Home.onCreated( function() {
+  Session.set('currentRoute', 'home');
+});
 
 Template.Home.rendered = function () {
 };

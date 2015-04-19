@@ -41,6 +41,13 @@ Router.route('/transactions', {
 
 Router.route('/about');
 
+Router.route('/categories/new', {
+  name: 'categories.new',
+  controller: 'CategoriesController',
+  action: 'create',
+  where: 'client',
+});
+
 Router.route('categories', {
   name: 'categories',
   controller: 'CategoriesController',

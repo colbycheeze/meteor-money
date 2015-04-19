@@ -2,7 +2,7 @@
 /* CreateTransaction: Event Handlers */
 /*****************************************************************************/
 Template.CreateTransaction.events({
-  'click button': function() {
+  'click [data-addNew=modal]': function() {
     Router.go('transaction.new');
   }
 });

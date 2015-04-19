@@ -1,7 +1,12 @@
 <template name="Categories">
   <h1>All Categories</h1>
+  <button class="btn btn-primary new-category">
+    <i class="fa fa-plus"></i> Add New
+  </button>
   {{#each categories}}
-    {{name}}
+    <ul>
+      <li> {{name}} </li>
+    </ul>
   {{/each}}
 
 </template>

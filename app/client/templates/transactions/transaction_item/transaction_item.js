@@ -12,6 +12,9 @@ Template.TransactionItem.events({
 /* TransactionItem: Helpers */
 /*****************************************************************************/
 Template.TransactionItem.helpers({
+  description: function() {
+    return s.titleize(this.description);
+  }
 });
 
 /*****************************************************************************/

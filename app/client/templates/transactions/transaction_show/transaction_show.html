@@ -1,8 +1,29 @@
 <template name="TransactionShow">
+  {{#if deleteClicked}}
+    {{> TransactionDelete}}
+    {{else}}
+    {{#contentFor "modalTitle"}}
+      {{description}}
+    {{/contentFor}}
+
+    <p><strong>Date:</strong> {{formatDate date}}</p>
+    <p><strong>Amount:</strong> {{formatCurrency amount}}</p>
+
+
+    <button class="btn btn-danger" data-delete="transaction">
+      <i class="fa fa-trash"></i> Delete
+    </button>
+  {{/if}}
+
+</template>
+
+<template name="TransactionDelete">
   {{#contentFor "modalTitle"}}
-    {{description}}
+    Delete {{description}}?
   {{/contentFor}}
 
-  <p>date: {{formatDate date}}</p>
-  <p>{{formatCurrency amount}}</p>
+  <h4>Are you sure?</h4>
+
+  <button class="btn btn-primary" data-confirm="delete" type="button"> Confirm </button>
+  <button class="btn btn-default" data-cancel="delete" type="button"> Cancel </button>
 </template>

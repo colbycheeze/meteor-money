@@ -1,6 +1,6 @@
 CategoriesController = RouteController.extend({
-  subscriptions: function () {
-    Meteor.subscribe('categories');
+  waitOn: function() {
+    return Meteor.subscribe('categories');
   },
 
   data: function () {
@@ -8,6 +8,13 @@ CategoriesController = RouteController.extend({
   },
 
   action: function () {
-    this.render('Categories', { /* data: {} */});
+    this.render('Categories');
+    this.render('NonexistentTemplateToTriggerLifeCycleHooks', {to: 'modalContent'});
+  },
+
+  create: function() {
+    this.render('Categories');
+    this.render('CategoryForm', {to: 'modalContent'});
+    $('#mainModal').modal('show');
   }
 });

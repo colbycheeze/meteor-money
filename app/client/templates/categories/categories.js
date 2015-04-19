@@ -2,6 +2,9 @@
 /* Categories: Event Handlers */
 /*****************************************************************************/
 Template.Categories.events({
+  'click .new-category': function() {
+    Router.go('categories.new');
+  }
 });
 
 /*****************************************************************************/
@@ -9,15 +12,16 @@ Template.Categories.events({
 /*****************************************************************************/
 Template.Categories.helpers({
   categories: function() {
-    return Categories.find({userId: Meteor.userId()});
+    return Categories.find();
   }
 });
 
 /*****************************************************************************/
 /* Categories: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Categories.created = function () {
-};
+Template.Categories.onCreated( function() {
+  Session.set('currentRoute', 'categories');
+});
 
 Template.Categories.rendered = function () {
 };

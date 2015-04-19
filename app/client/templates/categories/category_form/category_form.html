@@ -1,0 +1,13 @@
+<template name="CategoryForm">
+  {{#contentFor "modalTitle"}}
+    Add New Category
+  {{/contentFor}}
+
+  {{#autoForm collection="Categories" id="insertCategoryForm" type="insert" doc=formDoc}}
+    <fieldset>
+      {{> afQuickField name='name'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+
+</template>
