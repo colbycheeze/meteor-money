@@ -4,17 +4,13 @@
   <h3> Virtual Balance: {{virtualBalance}} </h3>
   <h1>All transactions</h1>
 
-  {{> CreateTransaction}}
+  <button class="btn btn-primary" data-addNew='modal'>
+    <i class="fa fa-plus"></i> Add New
+  </button>
 
   <div class="transactions-list">
 
-    {{#TableWrapper type="income"}}
-      <h3>Income</h3>
-    {{/TableWrapper}}
-    {{#TableWrapper type="expense"}}
-      <h3>Expenses</h3>
-    {{/TableWrapper}}
-
+    {{> reactiveTable settings=settings}}
 
   </div>
 </template>

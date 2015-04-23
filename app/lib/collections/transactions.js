@@ -63,7 +63,6 @@ this.Schemas.Transactions = new SimpleSchema({
       selectOnBlur: true,
       label: "Category"
     },
-    label: "Category ID",
     optional: true
   },
 
