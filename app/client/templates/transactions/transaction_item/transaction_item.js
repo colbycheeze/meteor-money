@@ -12,19 +12,27 @@ Template.TransactionItem.events({
 /* TransactionItem: Helpers */
 /*****************************************************************************/
 Template.TransactionItem.helpers({
+  category: function() {
+    if (this.categoryId === undefined) {
+      return 'Unsorted';
+    } else {
+      return Categories.findOne({_id: this.categoryId}).name;
+    }
+  },
+
   description: function() {
     return s.titleize(this.description);
   }
 });
 
 /*****************************************************************************/
-/* TransactionItem: Lifecycle Hooks */
+/* TransactionItem Life Cycle Hooks */
 /*****************************************************************************/
-Template.TransactionItem.created = function () {
-};
+Template.TransactionItem.onCreated(function (){
+});
 
-Template.TransactionItem.rendered = function () {
-};
+Template.TransactionItem.onRendered(function (){
+});
 
-Template.TransactionItem.destroyed = function () {
-};
+Template.TransactionItem.onDestroyed(function (){
+});

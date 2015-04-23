@@ -63,6 +63,8 @@ npm-bcrypt@0.7.8_2
 numeral:numeral@1.5.3
 observe-sequence@1.0.6
 ordered-dict@1.0.3
+pfafman:coffee-alerts@0.5.1_1
+pfafman:font-awesome-4@4.2.0_4
 rajit:bootstrap3-datepicker@1.4.1
 random@1.0.3
 reactive-dict@1.1.0

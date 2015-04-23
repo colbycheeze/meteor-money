@@ -2,9 +2,6 @@
 /* TransactionForm: Event Handlers */
 /*****************************************************************************/
 Template.TransactionForm.events({
-  'submit form': function(e, tmpl) {
-    $('#mainModal').modal('hide');
-  }
 });
 
 /*****************************************************************************/

@@ -6,22 +6,43 @@ this.Schemas.Categories = new SimpleSchema({
   userId: {
     type: String,
     autoValue: function() {
-      return Meteor.userId();
+      if ( this.isSet ){
+        return this.value;
+      } else {
+        return Meteor.userId();
+      }
     },
     label: "User ID"
   },
 
   name: {
     type: String,
+    unique: true,
     label: "Name"
   },
 
   parentId: {
     type:  String,
     autoValue: function() {
-      return 'null';
+      if ( this.isSet ){
+        return this.value;
+      } else {
+        return '';
+      }
     },
-    label: "Parent Id"
+    autoform: {
+      type: "select",
+      options: function() {
+        return _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
+          return {
+            label: doc.name,
+            value: doc._id
+          };
+        });
+      },
+      selectOnBlur: true,
+      label: "Parent Id"
+    }
   }
 });
 

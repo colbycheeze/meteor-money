@@ -3,10 +3,17 @@
   <button class="btn btn-primary new-category">
     <i class="fa fa-plus"></i> Add New
   </button>
-  {{#each categories}}
-    <ul>
-      <li> {{name}} </li>
-    </ul>
-  {{/each}}
+  <ul>
+    {{#each categories}}
+      <li> {{name}}
+        <ul>
+          {{#each children}}
+            <li> {{name}}</li>
+            {{/each}}
+        </ul>
+      </li>
+
+    {{/each}}
+  </ul>
 
 </template>

@@ -1,6 +1,6 @@
 HomeController = RouteController.extend({
   waitOn: function() {
-    return Meteor.subscribe('transactions');
+    return [ Meteor.subscribe('categories'),  Meteor.subscribe('transactions') ];
   },
 
   action: function() {

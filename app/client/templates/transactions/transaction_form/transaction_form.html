@@ -6,6 +6,7 @@
   {{#autoForm collection="Transactions" id="insertTransactionForm" type="insert" doc=formDoc}}
     <fieldset>
       {{> afQuickField name='date'}}
+      {{> afQuickField name='categoryId'}}
       {{> afQuickField name='description'}}
       {{> afQuickField name='amount'}}
       {{> afQuickField name='type' type="select-radio-inline" template="bootstrap3-horizontal"}}

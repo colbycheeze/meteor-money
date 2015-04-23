@@ -48,6 +48,19 @@ this.Schemas.Transactions = new SimpleSchema({
 
   categoryId: {
     type: String,
+    autoform: {
+      type: "select",
+      options: function() {
+        return _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
+          return {
+            label: doc.name,
+            value: doc._id
+          };
+        });
+      },
+      selectOnBlur: true,
+      label: "Category"
+    },
     label: "Category ID",
     optional: true
   },

@@ -12,7 +12,11 @@ Template.Categories.events({
 /*****************************************************************************/
 Template.Categories.helpers({
   categories: function() {
-    return Categories.find();
+    return Categories.find({parentId: ''});
+  },
+
+  children: function() {
+    return Categories.find({parentId: this._id});
   }
 });
 

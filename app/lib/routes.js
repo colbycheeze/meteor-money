@@ -1,3 +1,15 @@
+Router.onBeforeAction( function() {
+  if (!Meteor.userId()) {
+    CoffeeAlerts.error("Please Login first!");
+    Router.go('home')
+  } else {
+    this.next();
+  }
+},
+{
+  except: ['home']
+});
+
 Router.configure({
   layoutTemplate: 'MasterLayout',
   loadingTemplate: 'Loading',

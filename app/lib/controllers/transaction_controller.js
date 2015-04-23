@@ -1,6 +1,6 @@
 TransactionController = RouteController.extend({
   waitOn: function() {
-    return Meteor.subscribe('transactions');
+    return [  Meteor.subscribe('transactions'), Meteor.subscribe('categories') ];
   },
 
   data: function () {
