@@ -51,12 +51,14 @@ this.Schemas.Transactions = new SimpleSchema({
     autoform: {
       type: "select",
       options: function() {
-        return _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
-          return {
-            label: doc.name,
-            value: doc._id
-          };
+        returnable = [];
+        _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
+          returnable.push({class: 'parent', label: doc.name, value: doc._id});
+          _.map(Categories.find({parentId: doc._id}).fetch(), function(doc2) {
+            returnable.push({class: 'child', label: doc2.name, value: doc._id});
+          });
         });
+        return returnable;
       },
       selectOnBlur: true,
       label: "Category"
