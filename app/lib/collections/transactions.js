@@ -5,7 +5,11 @@ this.Schemas.Transactions = new SimpleSchema({
   userId: {
     type: String,
     autoValue: function() {
-      return Meteor.userId();
+      if ( this.isSet ){
+        return this.value;
+      } else {
+        return Meteor.userId();
+      }
     },
     label: "User ID"
   },

@@ -3,7 +3,7 @@
     Add New Category
   {{/contentFor}}
 
-  {{#autoForm collection="Categories" id="insertCategoryForm" type="insert" doc=formDoc}}
+  {{#autoForm collection="Categories" id="insertCategoryForm" autocomplete="on" type="insert" doc=formDoc}}
     <fieldset>
       {{> afQuickField name='name'}}
     </fieldset>

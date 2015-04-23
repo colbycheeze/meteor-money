@@ -21,16 +21,17 @@ Template.TransactionForm.helpers({
 });
 
 /*****************************************************************************/
-/* TransactionForm: Lifecycle Hooks */
+/* TransactionForm Life Cycle Hooks */
 /*****************************************************************************/
-Template.TransactionForm.created = function () {
-};
+Template.TransactionForm.onCreated(function (){
+});
 
-Template.TransactionForm.rendered = function () {
-  $('#mainModal').on('shown.bs.modal', function () {
-    $('input[name="description"]').focus();
+Template.TransactionForm.onRendered(function (){
+  $('#mainModal').on('shown.bs.modal', function(e) {
+    $('input[name=description]').focus();
   });
-};
+});
 
-Template.TransactionForm.destroyed = function () {
-};
+Template.TransactionForm.onDestroyed(function (){
+});
+

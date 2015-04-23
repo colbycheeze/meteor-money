@@ -55,3 +55,4 @@ Template.TransactionDelete.onDestroyed(function (){
   Session.set('isConfirmingDelete', false);
 });
 
+
