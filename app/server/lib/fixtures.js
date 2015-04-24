@@ -3,29 +3,58 @@
   Meteor.startup(function () {
 
     if (Meteor.users.find().fetch().length === 0) {
+
+      //Create Users
+
       var id = Accounts.createUser({
         username: 'colbycheeze',
         password: "foobar",
         profile: { name: 'Colby Williams' }
       });
 
-      user = Meteor.users.findOne();
+      //Create Categories
+
+      var homeCatId = Categories.insert({
+        name: 'Home',
+        parentId: '',
+        userId: id
+      });
+
+      Categories.insert({
+        name: 'Utilities',
+        parentId: homeCatId,
+        userId: id
+      });
+
+      var autoCatId = Categories.insert({
+        name: 'Auto',
+        parentId: '',
+        userId: id
+      });
+
+      Categories.insert({
+        name: 'Food',
+        parentId: '',
+        userId: id
+      });
+
+      //Create Transactions
 
       Transactions.insert({
         date: new Date(),
         description: "Car Loan",
         amount: 307.68,
         type: 'expense',
+        categoryId: autoCatId,
         userId: id
       });
-
-      console.log("Transaction: " + Transactions.findOne()._id);
 
       Transactions.insert({
         date: new Date(),
         description: "Rent",
         amount: 1375.00,
         type: 'expense',
+        categoryId: homeCatId,
         userId: id
       });
       Transactions.insert({
@@ -33,6 +62,7 @@
         description: "James side of water bill",
         amount: 38.21,
         type: 'income',
+        categoryId: homeCatId,
         userId: id
       });
       Transactions.insert({
@@ -56,7 +86,7 @@
         type: 'income',
         userId: id
       });
-
     }
   });
 })();
+

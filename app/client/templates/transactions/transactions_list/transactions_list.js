@@ -2,7 +2,7 @@
 /* TransactionsList: Event Handlers */
 /*****************************************************************************/
 Template.TransactionsList.events({
-  'click .reactive-table tr': function(e, tmpl) {
+  'click .reactive-table tbody tr': function(e, tmpl) {
     e.stopPropagation();
     Router.go('transaction.show', {_id: this._id});
   },
