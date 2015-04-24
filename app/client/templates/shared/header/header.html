@@ -1,7 +1,7 @@
 <template name="Header">
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Meteor Money</a>
+      <a class="navbar-brand" href="/"><i class="fa fa-usd"></i> Meteor Money</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -11,7 +11,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class={{isActiveRoute 'home'}}><a href="/">Home</a></li>
+        <li class={{isActiveRoute 'home'}}><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
         <li class={{isActiveRoute 'categories'}}>{{#linkTo route='categories'}}Categories{{/linkTo}}</li>
         <li class={{isActiveRoute 'about'}}>{{#linkTo route='about'}}About{{/linkTo}}</li>
       </ul>
