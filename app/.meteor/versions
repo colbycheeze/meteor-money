@@ -61,6 +61,7 @@ mongo@1.1.0
 mrt:moment@2.8.1
 msavin:jetsetter@1.0.9
 msavin:mongol@1.0.20
+natestrauser:x-editable-bootstrap@1.5.2_2
 npm-bcrypt@0.7.8_2
 numeral:numeral@1.5.3
 observe-sequence@1.0.6
