@@ -1,23 +1,17 @@
 <template name="MasterLayout">
-  {{> Header}}
-  {{> coffeeAlerts}}
-  <div class="container">
-    {{> yield}}
-    <div class="modal fade" id="mainModal" tabindex="-1"
-      role="dialog" aria-labelledby="mainLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="mainModal">
-              {{> yield 'modalTitle'}}
-            </h4>
-          </div>
-          <div class="modal-body">
-            {{> yield 'modalContent'}}
-          </div>
-        </div>
-      </div>
+  <div id='wrap'>
+    {{> Header}}
+    {{> coffeeAlerts}}
+
+    <div class="container">
+      {{> yield}}
+      {{> MainModal}}
+    </div>
+  </div>
+
+  <div id='footer'>
+    <div class="container footer">
+      {{> Footer}}
     </div>
   </div>
 </template>
