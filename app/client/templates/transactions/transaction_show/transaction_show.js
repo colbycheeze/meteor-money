@@ -11,6 +11,20 @@ Template.TransactionShow.events({
 /* TransactionShow: Helpers */
 /*****************************************************************************/
 Template.TransactionShow.helpers({
+  category: function() {
+    return Categories.findOne(this.categoryId).name;
+  },
+
+  categories: function() {
+    var categoryArr = [];
+
+    Categories.find().fetch().forEach( function(category) {
+      categoryArr.push({id: category._id, text: category.name});
+    });
+
+    return categoryArr;
+  },
+
   description: function() {
     return s.titleize(this.description);
   },
@@ -21,17 +35,34 @@ Template.TransactionShow.helpers({
 });
 
 /*****************************************************************************/
-/* TransactionShow: Lifecycle Hooks */
+/* TransactionShow Life Cycle Hooks */
 /*****************************************************************************/
-Template.TransactionShow.created = function () {
+Template.TransactionShow.onCreated(function (){
   Session.setDefault('isConfirmingDelete', false);
-};
+});
 
-Template.TransactionShow.rendered = function () {
-};
+Template.TransactionShow.onRendered(function (){
+  //TODO: Date selector chooses the PREVIOUS day??
+  $('.editable').editable({
+    source: Template.TransactionShow.__helpers.get('categories')(),
+    mode: 'inline',
+    display: function() { return false; },
 
-Template.TransactionShow.destroyed = function () {
-};
+    success: function(response, newValue) {
+      var fieldName = $(this).data('name');
+      var fieldId = $(this).data('pk');
+      var set = {}; set[fieldName] = newValue;
+
+      if(!Transactions.simpleSchema().namedContext().validateOne(set, fieldName))
+        return "Invalid";
+
+      Transactions.update(fieldId, {$set: set});
+    }
+  });
+});
+
+Template.TransactionShow.onDestroyed(function (){
+});
 
 /*****************************************************************************/
 /* TransactionDelete: Event Handlers */
@@ -54,5 +85,7 @@ Template.TransactionDelete.events({
 Template.TransactionDelete.onDestroyed(function (){
   Session.set('isConfirmingDelete', false);
 });
+
+
 
 

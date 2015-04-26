@@ -3,30 +3,42 @@ Transactions = new Mongo.Collection('transactions');
 this.Schemas || (this.Schemas = {});
 this.Schemas.Transactions = new SimpleSchema({
   userId: {
+    label: "User ID",
     type: String,
+
     autoValue: function() {
       if ( this.isSet ){
         return this.value;
       } else {
         return Meteor.userId();
       }
-    },
-    label: "User ID"
+    }
   },
 
   date: {
+    label: "Date",
     type: Date,
+    autoValue: function() {
+      if ( this.isSet ) {
+        console.log('date given ', this.value);
+        return this.value;
+      } else {
+        return new Date;
+      }
+    },
+
     autoform: {
       type: "bootstrap-datepicker"
-    },
-    label: "Date"
+    }
   },
 
   type: {
-    type: String,
     label: "Type",
+    type: String,
     allowedValues: ['expense', 'income'],
+
     autoform: {
+      type: "select-radio-inline",
       options: [
         {label: "Expense", value: "expense"},
         {label: "Income", value: "income"}
@@ -35,40 +47,69 @@ this.Schemas.Transactions = new SimpleSchema({
   },
 
   description: {
-    type: String,
-    label: "Description"
+    label: "Description",
+    type: String
   },
 
   amount: {
+    label: "Amount",
     type: Number,
     decimal: true,
-    min: 0,
-    label: "Amount"
+    min: 0
   },
 
   categoryId: {
+    label: 'Category',
     type: String,
+    optional: true,
+
+    autoValue: function() {
+      if ( this.isSet ){
+        return this.value;
+      } else {
+        var uncat = Categories.findOne({userId: this.userId, name: 'Uncategorized'});
+
+        if (uncat === undefined) {
+          return Categories.insert({userId: this.userId, name: 'Uncategorized', parentId: ''});
+        } else {
+          return uncat._id;
+        }
+      }
+    },
+
     autoform: {
-      type: "select",
+      label: "Category",
+      type: "select2",
+      selectOnBlur: true,
+
+      // TODO: Figure out nesting of categories
       options: function() {
         returnable = [];
         _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
-          returnable.push({class: 'parent', label: doc.name, value: doc._id});
-          _.map(Categories.find({parentId: doc._id}).fetch(), function(doc2) {
-            returnable.push({class: 'child', label: doc2.name, value: doc._id});
+          returnable.push ({
+            class: 'parent',
+            label: doc.name,
+            value: doc._id
+          });
+
+          _.map(Categories.find({
+            parentId: doc._id
+          }).fetch(), function(doc2) {
+            returnable.push ({
+              class: 'child',
+              label: doc2.name,
+              value: doc2._id
+            });
           });
         });
         return returnable;
-      },
-      selectOnBlur: true,
-      label: "Category"
-    },
-    optional: true
+      }
+    }
   },
 
   tags: {
-    type: [ String ],
     label: "Tag ID",
+    type: [ String ],
     optional: true
   }
 });
@@ -90,19 +131,5 @@ if (Meteor.isServer) {
       return userid === doc.userId;
     }
   });
-
-  // Transactions.deny({
-  //   insert: function (userId, doc) {
-  //     return true;
-  //   },
-  //
-  //   update: function (userId, doc, fieldNames, modifier) {
-  //     return true;
-  //   },
-  //
-  //   remove: function (userId, doc) {
-  //     return true;
-  //   }
-  // });
 }
 

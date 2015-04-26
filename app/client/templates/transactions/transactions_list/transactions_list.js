@@ -48,12 +48,8 @@ Template.TransactionsList.helpers({
       {
         key: 'categoryId',
         label: 'Category',
-        fn: function(value, object) {
-          if (value === null) {
-            return 'Uncategorized';
-          } else {
-            return Categories.findOne({_id: value}).name;
-          }
+        fn: function(value) {
+          return Categories.findOne({_id: value}).name;
         }
       },
 

@@ -6,6 +6,7 @@
 
       //Create Users
 
+      console.log('-- Creating Users --');
       var id = Accounts.createUser({
         username: 'colbycheeze',
         password: "foobar",
@@ -13,6 +14,13 @@
       });
 
       //Create Categories
+
+      console.log('-- Creating Categories --');
+      var uncatId = Categories.insert({
+        name: 'Uncategorized',
+        parentId: '',
+        userId: id
+      });
 
       var homeCatId = Categories.insert({
         name: 'Home',
@@ -40,6 +48,7 @@
 
       //Create Transactions
 
+      console.log('-- Creating Transactions --');
       Transactions.insert({
         date: new Date(),
         description: "Car Loan",
@@ -70,6 +79,7 @@
         description: "Bonus",
         amount: 300.00,
         type: 'income',
+        categoryId: uncatId,
         userId: id
       });
       Transactions.insert({
@@ -77,6 +87,7 @@
         description: "Initial Balance",
         amount: 1000.00,
         type: 'income',
+        categoryId: uncatId,
         userId: id
       });
       Transactions.insert({
@@ -84,6 +95,7 @@
         description: "Paycheck",
         amount: 1500.00,
         type: 'income',
+        categoryId: uncatId,
         userId: id
       });
     }

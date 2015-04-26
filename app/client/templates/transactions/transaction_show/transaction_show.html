@@ -1,14 +1,33 @@
 <template name="TransactionShow">
   {{#if deleteClicked}}
     {{> TransactionDelete}}
-    {{else}}
+  {{else}}
     {{#contentFor "modalTitle"}}
-      {{description}}
+      <span class="editable" data-type="text" data-placeholder="Enter Description"
+        data-pk="{{_id}}" data-name="description" data-emptytext="Click to enter description">
+        {{description}}
+      </span>
     {{/contentFor}}
 
-    <p><strong>Date:</strong> {{formatDate date}}</p>
-    <p><strong>Amount:</strong> {{formatCurrency amount}}</p>
 
+    <p><strong>Category:</strong>
+      <span class="editable" data-type="select2"
+        data-pk="{{_id}}" data-placeholder="Select Category" data-name="categoryId">
+        {{category}}
+      </span>
+    </p>
+    <p><strong>Date:</strong>
+      <span class="editable" data-type="date" data-name="date" data-pk="{{_id}}"
+        data-title="Select Date" data-format="mm-dd-yyyy" data-mode="popup">
+        {{formatDate date}}
+      </span>
+    </p>
+    <p><strong>Amount:</strong>
+      <span class="editable" data-type="text" data-name="amount" data-pk="{{_id}}"
+       data-placeholder="Enter Amount" data-emptytext="Click to enter amount" >
+        {{formatCurrency amount}}
+      </span>
+    </p>
 
     <button class="btn btn-danger" data-delete="transaction">
       <i class="fa fa-trash"></i> Delete

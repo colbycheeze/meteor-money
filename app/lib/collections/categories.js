@@ -4,6 +4,7 @@ this.Schemas || ( this.Schemas = {} );
 
 this.Schemas.Categories = new SimpleSchema({
   userId: {
+    label: "User ID",
     type: String,
     autoValue: function() {
       if ( this.isSet ){
@@ -11,18 +12,19 @@ this.Schemas.Categories = new SimpleSchema({
       } else {
         return Meteor.userId();
       }
-    },
-    label: "User ID"
+    }
   },
 
   name: {
+    label: "Name",
     type: String,
-    unique: true,
-    label: "Name"
+    unique: true
   },
 
   parentId: {
+    label: "Parent Category",
     type:  String,
+
     autoValue: function() {
       if ( this.isSet ){
         return this.value;
@@ -30,8 +32,11 @@ this.Schemas.Categories = new SimpleSchema({
         return '';
       }
     },
+
     autoform: {
-      type: "select",
+      label: "Parent Category",
+      selectOnBlur: true,
+      type: "select2",
       options: function() {
         return _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
           return {
@@ -39,9 +44,7 @@ this.Schemas.Categories = new SimpleSchema({
             value: doc._id
           };
         });
-      },
-      selectOnBlur: true,
-      label: "Parent Id"
+      }
     }
   }
 });
