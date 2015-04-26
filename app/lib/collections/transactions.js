@@ -20,10 +20,9 @@ this.Schemas.Transactions = new SimpleSchema({
     type: Date,
     autoValue: function() {
       if ( this.isSet ) {
-        console.log('date given ', this.value);
         return this.value;
       } else {
-        return new Date;
+        return new Date();
       }
     },
 

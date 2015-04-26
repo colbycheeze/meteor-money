@@ -41,16 +41,26 @@ Template.TransactionShow.onCreated(function (){
   Session.setDefault('isConfirmingDelete', false);
 });
 
-Template.TransactionShow.onRendered(function (){
-  //TODO: Date selector chooses the PREVIOUS day??
+Template.TransactionShow.onRendered(function () {
   $('.editable').editable({
     source: Template.TransactionShow.__helpers.get('categories')(),
     mode: 'inline',
     display: function() { return false; },
 
+    datepicker: {
+      autoclose: true
+    },
+
     success: function(response, newValue) {
       var fieldName = $(this).data('name');
       var fieldId = $(this).data('pk');
+
+      //TODO: Why does Date selector choose the PREVIOUS day??
+      if (fieldName === 'date') {
+        console.log('Date Hack -- Changing', newValue);
+        newValue.setDate(newValue.getDate()+1);
+        console.log('To: ', newValue);
+      }
       var set = {}; set[fieldName] = newValue;
 
       if(!Transactions.simpleSchema().namedContext().validateOne(set, fieldName))
@@ -61,7 +71,7 @@ Template.TransactionShow.onRendered(function (){
   });
 });
 
-Template.TransactionShow.onDestroyed(function (){
+Template.TransactionShow.onDestroyed(function () {
 });
 
 /*****************************************************************************/
