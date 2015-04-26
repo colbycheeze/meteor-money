@@ -84,20 +84,18 @@ this.Schemas.Transactions = new SimpleSchema({
       // TODO: Figure out nesting of categories
       options: function() {
         returnable = [];
-        _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
+        _.map(Categories.find({parentId: ''}).fetch(), function(category) {
           returnable.push ({
             class: 'parent',
-            label: doc.name,
-            value: doc._id
+            label: category.name,
+            value: category._id
           });
 
-          _.map(Categories.find({
-            parentId: doc._id
-          }).fetch(), function(doc2) {
+          _.map(Categories.find({ parentId: category._id }).fetch(), function(childCategory) {
             returnable.push ({
               class: 'child',
-              label: doc2.name,
-              value: doc2._id
+              label: childCategory.name,
+              value: childCategory._id
             });
           });
         });

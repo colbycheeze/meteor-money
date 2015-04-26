@@ -48,7 +48,8 @@ Template.TransactionShow.onRendered(function () {
     display: function() { return false; },
 
     datepicker: {
-      autoclose: true
+      autoclose: true,
+      format: 'yy-mm-dd',
     },
 
     success: function(response, newValue) {

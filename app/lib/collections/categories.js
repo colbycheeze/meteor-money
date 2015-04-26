@@ -37,14 +37,8 @@ this.Schemas.Categories = new SimpleSchema({
       label: "Parent Category",
       selectOnBlur: true,
       type: "select2",
-      options: function() {
-        return _.map(Categories.find({parentId: ''}).fetch(), function(doc) {
-          return {
-            label: doc.name,
-            value: doc._id
-          };
-        });
-      }
+        // options: [{ label: 'Label', value: 1 }]
+      options: nestCategories()
     }
   }
 });
