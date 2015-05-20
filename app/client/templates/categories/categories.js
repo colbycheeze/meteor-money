@@ -1,15 +1,9 @@
-/*****************************************************************************/
-/* Categories: Event Handlers */
-/*****************************************************************************/
 Template.Categories.events({
   'click .new-category': function() {
     Router.go('categories.new');
   }
 });
 
-/*****************************************************************************/
-/* Categories: Helpers */
-/*****************************************************************************/
 Template.Categories.helpers({
   categories: function() {
     return Categories.find({parentId: ''});
@@ -21,14 +15,15 @@ Template.Categories.helpers({
 });
 
 /*****************************************************************************/
-/* Categories: Lifecycle Hooks */
+/* Categories Life Cycle Hooks */
 /*****************************************************************************/
-Template.Categories.onCreated( function() {
+Template.Categories.onCreated(function (){
   Session.set('currentRoute', 'categories');
 });
 
-Template.Categories.rendered = function () {
-};
+Template.Categories.onRendered(function (){
+});
 
-Template.Categories.destroyed = function () {
-};
+Template.Categories.onDestroyed(function (){
+});
+

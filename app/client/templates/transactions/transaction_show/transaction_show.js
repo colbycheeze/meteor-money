@@ -15,15 +15,6 @@ Template.TransactionShow.helpers({
     return Categories.findOne(this.categoryId).name;
   },
 
-  categories: function() {
-    var categoryArr = [];
-
-    Categories.find().fetch().forEach( function(category) {
-      categoryArr.push({id: category._id, text: category.name});
-    });
-
-    return categoryArr;
-  },
 
   description: function() {
     return s.titleize(this.description);
@@ -43,7 +34,7 @@ Template.TransactionShow.onCreated(function (){
 
 Template.TransactionShow.onRendered(function () {
   $('.editable').editable({
-    source: Template.TransactionShow.__helpers.get('categories')(),
+    source: nestCategories(),
     mode: 'inline',
     display: function() { return false; },
 

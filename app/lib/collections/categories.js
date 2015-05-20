@@ -37,8 +37,9 @@ this.Schemas.Categories = new SimpleSchema({
       label: "Parent Category",
       selectOnBlur: true,
       type: "select2",
-        // options: [{ label: 'Label', value: 1 }]
-      options: nestCategories()
+      options: function() {
+       return nestCategories();
+      }
     }
   }
 });
@@ -61,6 +62,3 @@ if (Meteor.isServer) {
   });
 
 }
-
-
-

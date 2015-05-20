@@ -27,7 +27,8 @@ this.Schemas.Transactions = new SimpleSchema({
     },
 
     autoform: {
-      type: "bootstrap-datepicker"
+      type: "bootstrap-datepicker",
+      defaultValue: function() { return new Date(); }
     }
   },
 
@@ -38,6 +39,7 @@ this.Schemas.Transactions = new SimpleSchema({
 
     autoform: {
       type: "select-radio-inline",
+      defaultValue: function() { return 'expense'; },
       options: [
         {label: "Expense", value: "expense"},
         {label: "Income", value: "income"}
@@ -81,25 +83,8 @@ this.Schemas.Transactions = new SimpleSchema({
       type: "select2",
       selectOnBlur: true,
 
-      // TODO: Figure out nesting of categories
       options: function() {
-        returnable = [];
-        _.map(Categories.find({parentId: ''}).fetch(), function(category) {
-          returnable.push ({
-            class: 'parent',
-            label: category.name,
-            value: category._id
-          });
-
-          _.map(Categories.find({ parentId: category._id }).fetch(), function(childCategory) {
-            returnable.push ({
-              class: 'child',
-              label: childCategory.name,
-              value: childCategory._id
-            });
-          });
-        });
-        return returnable;
+        return nestCategories();
       }
     }
   },
